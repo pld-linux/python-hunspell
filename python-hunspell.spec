@@ -15,7 +15,7 @@ Release:	1
 License:	GPL
 Group:		Libraries/Python
 # https://pypi.python.org/packages/source/h/hunspell/hunspell-0.2.1.tar.gz#md5=a228fbbedad209fb7691abe6d46add53
-Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz#md5=a228fbbedad209fb7691abe6d46add53
+Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz
 # Source0-md5:	a228fbbedad209fb7691abe6d46add53
 Patch0:		%{name}-lib_fix.patch
 URL:		http://github.com/blatinier/pyhunspell
