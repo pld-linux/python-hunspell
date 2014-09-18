@@ -3,28 +3,25 @@
 %bcond_with	doc		# don't build doc
 %bcond_with	tests	# do not perform "make test"
 %bcond_without	python2 # CPython 2.x module
-%bcond_with	python3 # CPython 3.x module
+%bcond_without	python3 # CPython 3.x module
 
 %define 	module	hunspell
 Summary:	Pyhunspell is a set of Python bindings for the Hunspell spellchecker engine
 Summary(pl.UTF-8):	Moduł interfejsu do słownika Hunspell
 # Name must match the python module/package name (as in 'import' statement)
 Name:		python-%{module}
-Version:	0.2.1
+Version:	0.3.1
 Release:	1
 License:	GPL
 Group:		Libraries/Python
 # https://pypi.python.org/packages/source/h/hunspell/hunspell-0.2.1.tar.gz#md5=a228fbbedad209fb7691abe6d46add53
 Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz
-# Source0-md5:	a228fbbedad209fb7691abe6d46add53
+# Source0-md5:	85d57a3bc056e3b302141c37378bfdf1
 Patch0:		%{name}-lib_fix.patch
 URL:		http://github.com/blatinier/pyhunspell
 BuildRequires:	hunspell-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
-
-
-
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-distribute
@@ -54,8 +51,15 @@ Summary(pl.UTF-8):	Moduł interfejsu do słownika Hunspell
 Group:		Libraries/Python
 
 %description -n python3-%{module}
+Pyhunspell is a set of Python bindings for the Hunspell spellchecker
+engine. It lets developers load Hunspell dictionaries, check words,
+get suggestions, add new words, etc. It also provides some basic
+morphological analysis related methods
 
 %description -n python3-%{module} -l pl.UTF-8
+Moduł interfejsu do słownika Hunspell. Pozwala załadować słowniki,
+sprawdzać pisownie, uzyskać sugestie, dodawać słowa itp. Daje dostęp
+do podstawowywch metod analizy morfologicznej.
 
 %package apidocs
 Summary:	%{module} API documentation
@@ -71,7 +75,7 @@ Dokumentacja API %{module}.
 %prep
 %setup -q -n %{module}-%{version}
 %patch0 -p1
-# fix #!%{_bindir}/env python -> #!%{_bindir}/python:
+# fix #!%{_bindir}/env python -> #!%{__python}:
 #%{__sed} -i -e '1s,^#!.*python,#!%{__python},' %{name}.py
 
 %build
@@ -142,8 +146,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-# change %{py_sitedir} to %{py_sitescriptdir} for 'noarch' packages!
-# %{py_sitedir}/*.py[co]
 %attr(755,root,root) %{py_sitedir}/*.so
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/%{module}-*.egg-info
@@ -154,9 +156,9 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE
-%{py3_sitescriptdir}/%{module}
-%{py3_sitescriptdir}/%{module}-%{version}-py*.egg-info
+#%%doc AUTHORS CHANGES LICENSE
+%attr(755,root,root) %{py3_sitedir}/*.so
+%{py3_sitedir}/%{module}-%{version}-py*.egg-info
 # %{_examplesdir}/python3-%{module}-%{version}
 %endif
 
