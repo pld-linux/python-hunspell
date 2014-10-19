@@ -8,7 +8,7 @@ Summary:	Pyhunspell - Python 2.x bindings for the Hunspell spellchecker engine
 Summary(pl.UTF-8):	Pyhunspell - wiązania Pythona 2.x do silnika sprawdzania pisowni Hunspell
 Name:		python-%{module}
 Version:	0.3.1
-Release:	1
+Release:	2
 License:	LGPL v3+
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz
