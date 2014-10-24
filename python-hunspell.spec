@@ -10,13 +10,13 @@ Summary:	Pyhunspell is a set of Python bindings for the Hunspell spellchecker en
 Summary(pl.UTF-8):	Moduł interfejsu do słownika Hunspell
 # Name must match the python module/package name (as in 'import' statement)
 Name:		python-%{module}
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 License:	GPL
 Group:		Libraries/Python
 # https://pypi.python.org/packages/source/h/hunspell/hunspell-0.2.1.tar.gz#md5=a228fbbedad209fb7691abe6d46add53
 Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz
-# Source0-md5:	85d57a3bc056e3b302141c37378bfdf1
+# Source0-md5:	39373430a1541618aea67d99d31d0ac8
 Patch0:		%{name}-lib_fix.patch
 URL:		http://github.com/blatinier/pyhunspell
 BuildRequires:	hunspell-devel
