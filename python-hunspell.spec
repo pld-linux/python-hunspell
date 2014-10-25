@@ -15,7 +15,7 @@ Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.
 # Source0-md5:	39373430a1541618aea67d99d31d0ac8
 Patch0:		%{name}-lib_fix.patch
 URL:		http://github.com/blatinier/pyhunspell
-BuildRequires:	hunspell-devel
+BuildRequires:	hunspell-devel >= 1.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with python2}
