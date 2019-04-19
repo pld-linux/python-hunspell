@@ -7,25 +7,26 @@
 Summary:	Pyhunspell - Python 2.x bindings for the Hunspell spellchecker engine
 Summary(pl.UTF-8):	Pyhunspell - wiązania Pythona 2.x do silnika sprawdzania pisowni Hunspell
 Name:		python-%{module}
-Version:	0.4.1
-Release:	5
-License:	GPL v3+
+Version:	0.5.5
+Release:	1
+License:	LGPL v3+
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/hunspell/
+#Source0Download: https://pypi.org/simple/hunspell/
 Source0:	https://pypi.python.org/packages/source/h/hunspell/hunspell-%{version}.tar.gz
-# Source0-md5:	d8b69c71a1e4d9a74c00972f76ea06bc
-URL:		http://github.com/blatinier/pyhunspell
-BuildRequires:	hunspell-devel >= 1.3
+# Source0-md5:	90b3fdccca06893837b2aff3290e7456
+URL:		https://github.com/blatinier/pyhunspell
+BuildRequires:	hunspell-devel >= 1.7
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	sed >= 4.0
 %if %{with python2}
 BuildRequires:	python-devel >= 2
+BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.2
-BuildRequires:	python3-modules >= 1:3.2
+BuildRequires:	python3-setuptools
 %endif
 Requires:	python-modules >= 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
